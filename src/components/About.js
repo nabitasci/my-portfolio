@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import Section from './Section.js';
 import sanityClient from '../client.js';
-import aboutBg from '../bg-about.jpeg';
 import imageUrlBuilder from '@sanity/image-url';
 import BlockContent from '@sanity/block-content-to-react';
 
@@ -9,8 +9,7 @@ const builder = imageUrlBuilder(sanityClient);
 function urlFor(source){
   return builder.image(source);
 }
-
-export default function About(){
+export default function About(props){
   const[author, setAuthor] = useState(null);
 
   useEffect(() => {
@@ -24,31 +23,45 @@ export default function About(){
   }, []);
 
   if(!author) return <div>Loading...</div>
+
   return (
-    <main className="realative">
-      <img src={aboutBg} alt= "About Bg" className="absolute w-full"/>
-      <div className="p-10 lg:pt-48 container mx-auto relative">
-        <section className="bg-green-800 rounded-lg shadow-2xl lg:flex p-20">
-          <img 
+    <Section id={props.id} name={props.id} title={props.title} subtitle={props.subtitle}>
+      <img 
           src={urlFor(author.authorImage).url()} 
-          className="rounded w-32 h-32 lg:w-64 lg:h-64 mr-8"
+          className="about__img"
           alt={author.name}
           />
-          <div className="text-lg flex flex-col justify-center">
-            <h1 className="cursive text-6xl text-green-300 mb-4">
-              Hey there. I'm {" "}
-              <span className="text-green-800">{author.name}</span>
-            </h1>
-            <div className="prose lg:prose-xl text-white">
+          <div className="about__data">
+            <p className="about__description">
               <BlockContent
                 blocks={author.bio}
                 projectId="v90uxdwb"
                 dataset="production"
               />
+            </p>
+            <div className="about__info">
+              <div>
+                <span className="about__info-title">04+</span>
+                <span className="about__info-name">Years <br/> experience </span>
+              </div>
+
+              <div>
+                <span className="about__info-title">04+</span>
+                <span className="about__info-name">Complated <br/> project </span>
+              </div>
+
+              <div>
+                <span className="about__info-title">02</span>
+                <span className="about__info-name">Companies <br/> worked </span>
+              </div>
             </div>
+            <div className="about__buttons">
+                <a download="" href="assets/pdf/Alexa-Cv.pdf" className="button button--flex">
+                  Download Cv<i className="uil uil-download-alt button__icon"></i>
+                </a>
+              </div>
           </div>
-        </section>
-      </div>
-    </main>
+
+    </Section>
   );
 }

@@ -1,5 +1,6 @@
 import React, {useEffect, useState}from 'react';
 import sanityClient from '../client.js';
+import Section from './Section.js';
 
 export default function Project () {
   const [projectData, setProjectData] = useState(null);
@@ -19,8 +20,8 @@ export default function Project () {
   });
 
   return (
-    <main className="bg-green-100 min-h-screen p-12">
-      <section className="container mx-auto">
+    <main>
+      <Section>
         <h1 className="text-5xl flex justify-center cursive">Projects</h1>
         <h2 className="text-lg text-gray-600 flex justify-center mb-12">
           Welcome to my projects page!
@@ -68,7 +69,7 @@ export default function Project () {
           </article>
           ))}
         </section>
-      </section>
+      </Section>
     </main>
   );
 }

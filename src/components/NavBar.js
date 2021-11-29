@@ -1,42 +1,71 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import {NavLink} from 'react-router-dom'
-import {SocialIcon} from 'react-social-icons'
 
 export default function NavBar () {
+  const [isActive, setIsActive] = useState(false);
+
+  const [isDark, setIsDark] = useState(true);
+
+  const menuCss = {
+    'bottom': isActive ? "0": "-100%"
+  };
+
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setOffset(window.pageYOffset)
+    }
+  }, []);
+
+
   return (
-      <header className="bg-red-600">
-        <div className="container mx-auto flex justify-between">
-          <nav className="flex"> 
-            <NavLink to='/' 
-            exact 
-            activeClassName="text-white"
-            className="inline-flex items-center py-3 px-3 mr-4 text-red-100 hover:text-green-800 text-4xl font-bold cursive tracking-widest">
-              NABI
-            </NavLink>
-            <NavLink 
-              to="/post"
-              className="inline-flex items-center py-3 px-3 my-6 rounded text-red-200 hover:text-green-800"
-              activeClassName="text-white-800 bg-red-700"
-              >
-              Blog Posts
-            </NavLink>
-            <NavLink to="/project"
-              className="inline-flex items-center py-3 px-3 my-6 rounded text-red-200 hover:text-green-800"
-              activeClassName="text-white-800 bg-red-700">
-              Projects
-            </NavLink>
-            <NavLink to="/about"
-              className="inline-flex items-center py-3 px-3 my-6 rounded text-red-200 hover:text-green-800"
-              activeClassName="text-white-800 bg-red-700">
-              About Me!
-            </NavLink>
+      <header id="header" className={offset>=80 ? 'header scroll-header': 'header'}>
+          <nav className="nav container__cus"> 
+          <NavLink className="nav__logo nav__link" to='/' exact >NABI</NavLink>
+            <div className="nav__menu" style={menuCss} id="nav-menu">
+              <ul className="nav__list grid">
+              <li className="nav__item">
+                <NavLink to="/" activeClassName="active-link" className="nav__link" exact>
+                  <i className="uil uil-estate nav__icon"></i>
+                  {" "}Home
+                  </NavLink>
+                
+                </li>
+                <li className="nav__item">
+                  <NavLink to="/post" activeClassName="active-link" className="nav__link">
+                <i className="uil uil-blogger-alt nav__icon"></i>
+                  {" "}Blog Posts
+                  </NavLink>
+                </li>
+                <li className="nav__item">
+                  <NavLink to="/project" className="nav__link" activeClassName="active-link">
+                  <i className="uil uil-brackets-curly nav__icon"></i> 
+                  {" "}
+                  Projects
+                  </NavLink>
+                  
+                </li>
+                <li className="nav__item">
+                  <NavLink to="/about" className="nav__link" activeClassName="active-link"> 
+                <i className="uil uil-user nav__icon"></i>
+                {" "}
+                About Me! 
+                </NavLink>
+                
+                </li>
+              </ul>
+              <i className="uil uil-times nav__close nav__icon" id="nav-close" onClick={() => setIsActive(false)}></i>
+            </div>
+            <div className="nav__btns">
+              <i className={isDark?"uil uil-moon change-theme dark-theme":"uil uil-sun change-theme"} id="theme-button" onClick={() => {setIsDark(!isDark)
+              document.body.classList.toggle('dark-theme')}}></i>
+              <div className="nav__toggle" id="nav-toggle">
+                <i className="uil uil-apps nav__icon"  onClick={() => setIsActive(true)}></i>
+              </div>
+            </div>  
           </nav>
-          <div className="inline-flex py-3 px-3 my-6">
-            <SocialIcon url="https://twitter.com/nabitasci" className="mr-4" target="_blank" fgColor="#fff" style={{height:35, width:35}}/>
-            <SocialIcon url="https://www.instagram.com/nabitasci" className="mr-4" target="_blank" fgColor="#fff" style={{height:35, width:35}}/>
-            <SocialIcon url="https://www.linkedin.com/in/omer-nabi-tasci/" className="mr-4" target="_blank" fgColor="#fff" style={{height:35, width:35}}/>
-          </div>
-        </div>
+          
       </header>
   )
 }
