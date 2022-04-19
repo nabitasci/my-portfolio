@@ -7,10 +7,10 @@ export default function Home (){
         <div className="home__container container__cus grid">
           <div className="home__content grid">
               <div className="home__social">
-                <a href="https://www.linkedin.com/" target="_blank" className="home__social-icon ">
+                <a href="https://www.linkedin.com/" rel="noreferrer" className="home__social-icon ">
                 <i className="uil uil-linkedin-alt"></i>
                 </a>
-                <a href="https://www.github.com/" target="_blank" className="home__social-icon">
+                <a href="https://www.github.com/" rel="noreferrer" className="home__social-icon">
                 <i className="uil uil-github"></i>
                 </a>
               </div>

@@ -62,7 +62,7 @@ export default function QualificationTabs(props){
         dataArray && dataArray.map((data, index) => (
           <div 
           key={index}
-            className={index == activeIndex ? 'qualification__button button--flex qualification__active': 'qualification__button button--flex' }
+            className={index === activeIndex ? 'qualification__button button--flex qualification__active': 'qualification__button button--flex' }
             data-target={'#'+data.id} 
             onClick={
               () => setActiveIndex(index)
@@ -76,7 +76,7 @@ export default function QualificationTabs(props){
       <div className="qualification__sections">
         {
           dataArray && dataArray.map((data, index)=>(
-            <QualificationSection key={data.id} id={data.id} isActive={index==activeIndex} data={data.content} lastIndex = {data.content.length}/>
+            <QualificationSection key={data.id} id={data.id} isActive={index===activeIndex} data={data.content} lastIndex = {data.content.length}/>
           ))
         }       
       </div>

@@ -46,7 +46,7 @@ export default function ContactMe(){
             <textarea name="" id="" cols="0" rows="7" className="contact__input"></textarea>
           </div>
           <div>
-            <a href="#" className="button button--flex">
+            <a href="/#" className="button button--flex">
               Send Message
               <i className="uil uil-message button__icon"></i>
             </a>

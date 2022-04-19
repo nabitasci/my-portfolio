@@ -3,15 +3,10 @@ import QualificationTabs from './QualificationTabs.js';
 import Skills from './Skills.js';
 import About from './About.js';
 import Service from './Service.js';
-import Section from './Section.js';
-import pimage from './portfolio1.jpg'
-import { Swiper, SwiperSlide } from "swiper/react";
-
 
 import SwiperCore, {
   Navigation,Pagination,Mousewheel,Keyboard
 } from 'swiper';
-import Footer from './Footer.js';
 import ScrollUp from './ScrollUp.js';
 import RecentPost from './RecentPost.js';
 import ContactMe from './ContactMe.js';

@@ -15,7 +15,7 @@ export default function QualificationData(props){
         </div>
       <div>
         <span className="qualification__rounder"></span>
-        {(props.isLast=="false")&&(<span className="qualification__line"></span>)}
+        {(props.isLast=== false )&&(<span className="qualification__line"></span>)}
       </div>
     </div>
     );
@@ -25,7 +25,7 @@ export default function QualificationData(props){
           <div></div>
           <div>
             <span className="qualification__rounder"></span>
-            {(props.isLast=="false")&&(<span className="qualification__line"></span>)}
+            {(props.isLast === false) && (<span className="qualification__line"></span>)}
           </div>
             <div>
                   <h3 className="qualification__title"> {props.title}</h3>

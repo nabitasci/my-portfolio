@@ -22,13 +22,13 @@ export default function Footer(props){
           </li>
         </ul>
         <div className="footer__socials">
-          <a className="footer__social" href="https://www.facebook.com" target="_blank">
+          <a rel="noreferrer" className="footer__social" href="https://www.facebook.com" target="_blank">
             <i className="uil uil-facebook-f"></i>
           </a>
-          <a className="footer__social" href="https://www.instagram.com" target="_blank">
+          <a rel="noreferrer" className="footer__social" href="https://www.instagram.com" target="_blank">
           <i className="uil uil-instagram"></i>
           </a>
-          <a className="footer__social" href="https://www.twitter.com" target="_blank">
+          <a rel="noreferrer" className="footer__social" href="https://www.twitter.com" target="_blank">
           <i className="uil uil-twitter-alt"></i>
           </a>
         </div>
